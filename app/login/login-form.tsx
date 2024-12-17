@@ -47,7 +47,9 @@ const LoginForm = () => {
         onSubmit={form.handleSubmit((data) => {
           setLoading(true);
           setTimeout(() => {
-            toast.success("Form Submited"), setLoading(false);
+            toast.success("Form Submited");
+            setLoading(false);
+            console.log(data);
           }, 1000);
         })}
         className="space-y-3"
