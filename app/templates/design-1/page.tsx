@@ -75,9 +75,9 @@ const Design: React.FC = () => {
                 alt="card"
                 className="w-[1050px] h-[600px]"
               />
-              <Box className="absolute w-full h-full flex items-center justify-center top-0 left-0">
-                <img src={logo} className="w-[300]" />
-              </Box>
+              <div className="absolute w-full h-full flex items-center justify-center top-0 left-0">
+                <img src={logo} className="w-[300px]" />
+              </div>
             </Box>
           </Flex>
         </Flex>

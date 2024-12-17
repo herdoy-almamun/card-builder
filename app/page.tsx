@@ -10,7 +10,7 @@ export default function Home() {
         justify="center"
         direction="column"
         gap="4"
-        className="h-[calc(100dvh-70px)] px-3 md:px-0"
+        className="md:h-[calc(100dvh-70px)] mt-10 md:mt-0 px-3 md:px-0"
       >
         <h1 className="text-4xl font-semibold text-center leading-[50px] max-w-[600px]">
           Design, Customize, and Download Your Perfect{" "}
