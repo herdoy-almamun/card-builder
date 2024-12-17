@@ -1,16 +1,26 @@
 import { Button } from "@/components/ui/button";
-import { Container } from "@radix-ui/themes";
+import { Container, Flex } from "@radix-ui/themes";
+import Nav from "./nav";
 
 export default function Home() {
   return (
-    <Container>
-      <Button>Click Me</Button>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam,
-        dignissimos commodi magni adipisci maxime nam culpa illum voluptatum
-        debitis fugiat modi praesentium, odit blanditiis! Nobis nihil maxime
-        officia perspiciatis veritatis.
-      </p>
-    </Container>
+    <main>
+      <Nav />
+      <Container>
+        <Flex
+          align="center"
+          justify="center"
+          direction="column"
+          gap="4"
+          className="h-[calc(100dvh-70px)] px-3 md:px-0"
+        >
+          <h1 className="text-4xl font-semibold text-center leading-[50px] max-w-[600px]">
+            Design, Customize, and Download Your Perfect{" "}
+            <span className="text-primary">Business Card</span> Totally Free!
+          </h1>
+          <Button>Get Start</Button>
+        </Flex>
+      </Container>
+    </main>
   );
 }
