@@ -3,69 +3,40 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Box, Container, Flex, Grid } from "@radix-ui/themes";
-import html2canvas from "html2canvas";
-import { jsPDF } from "jspdf";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { useReactToPrint } from "react-to-print";
 
-const Design = () => {
-  const [location, setLocation] = useState("123 Dummy, Lorem Ipsum");
-  const [phone, setPhone] = useState("+8801408127781");
-  const [email, setEmail] = useState("herdoycode@gmail.com");
-  const [website, setWebsite] = useState("www.herdoycode.com");
-  const [name, setName] = useState("Your Name");
-  const [tag, setTag] = useState("Graphic Designer");
+const Design: React.FC = () => {
+  const [location, setLocation] = useState<string>("123 Dummy, Lorem Ipsum");
+  const [phone, setPhone] = useState<string>("+8801408127781");
+  const [email, setEmail] = useState<string>("herdoycode@gmail.com");
+  const [website, setWebsite] = useState<string>("www.herdoycode.com");
+  const [logo, setLogo] = useState("/logos/design-1.png");
+  const [name, setName] = useState<string>("Your Name");
+  const [tag, setTag] = useState<string>("Graphic Designer");
 
-  // Ref to capture the card for rendering into PDF
-  const cardRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
 
-  const downloadPDF = async () => {
-    const element = cardRef.current;
-    if (!element) {
-      console.error("The cardRef is not attached to an element.");
-      return;
-    }
-
-    // Temporarily remove the zoom style
-    const originalZoom = element.style.zoom;
-    element.style.zoom = "100%";
-
-    // Render the card section as an image
-    const canvas = await html2canvas(element, {
-      scale: 2, // Increase resolution
-      useCORS: true, // Handle cross-origin images if needed
-    });
-
-    // Restore the original zoom style
-    element.style.zoom = originalZoom;
-
-    const imgData = canvas.toDataURL("image/png");
-
-    // Create a new jsPDF instance
-    const pdf = new jsPDF({
-      orientation: "portrait",
-      unit: "px",
-      format: [canvas.width, canvas.height],
-    });
-
-    // Add the rendered image to the PDF
-    pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
-    pdf.save("business-card.pdf");
-  };
+  const reactToPrintFn = useReactToPrint({
+    contentRef: contentRef as React.RefObject<Element | Text>,
+  });
 
   return (
     <Container className="px-3">
       <Grid columns={{ initial: "1", md: "1fr 300px" }} my="6">
-        <Flex align="center" justify="center">
+        <Flex
+          align="center"
+          justify="center"
+          style={{ zoom: "40%" }}
+          className="bg-gray-400"
+        >
           <Flex
-            ref={cardRef}
+            ref={contentRef}
             align="center"
             justify="center"
             direction="column"
-            className="w-[1200px] h-[1400px] gap-[75px] bg-gray-400"
-            style={{
-              zoom: "40%",
-            }}
+            className="w-[1200px] h-[1400px] gap-[75px]"
           >
             <Box className="w-[1050px] h-[600px] relative">
               <Image
@@ -78,17 +49,17 @@ const Design = () => {
               <Grid
                 columns="1"
                 rows="4"
-                className="text-[28px] absolute top-[175px] left-[170px] text-white gap-[25px]"
+                className="text-[28px] absolute top-[185px] left-[170px] text-white gap-[25px]"
               >
-                <div> {location} </div>
-                <div> {phone} </div>
-                <div> {email} </div>
-                <div> {website} </div>
+                <div>{location}</div>
+                <div>{phone}</div>
+                <div>{email}</div>
+                <div>{website}</div>
               </Grid>
               <Flex
                 direction="column"
                 align="end"
-                className="absolute right-[85px] top-[200px] leading-[45px]"
+                className="absolute right-[85px] top-[250px] leading-[45px]"
               >
                 <h1 className="text-[60px] font-semibold tracking-[-2px]">
                   {name}
@@ -96,7 +67,7 @@ const Design = () => {
                 <span className="text-[28px] font-[600]">{tag}</span>
               </Flex>
             </Box>
-            <Box className="w-[1050px] h-[600px]">
+            <Box className="w-[1050px] h-[600px] relative">
               <Image
                 width={1050}
                 height={600}
@@ -104,6 +75,9 @@ const Design = () => {
                 alt="card"
                 className="w-[1050px] h-[600px]"
               />
+              <Box className="absolute w-full h-full flex items-center justify-center top-0 left-0">
+                <img src={logo} className="w-[300]" />
+              </Box>
             </Box>
           </Flex>
         </Flex>
@@ -146,8 +120,36 @@ const Design = () => {
             onChange={(e) => setWebsite(e.target.value)}
             placeholder="Enter Website"
           />
-          <Button className="w-full" onClick={downloadPDF}>
-            Download as PDF
+          <Flex
+            align="center"
+            justify="start"
+            className="w-full border rounded-md overflow-hidden cursor-pointer relative"
+            gap="2"
+          >
+            <div className="p-1 bg-black">
+              <img src={logo} alt="logo" className="h-7" />
+            </div>
+            <span className="text-gray-400">Select your logo</span>
+            <input
+              className="w-full absolute top-0 left-0 opacity-0 cursor-pointer"
+              type="file"
+              onChange={(e) => {
+                if (e.target.files && e.target.files[0]) {
+                  const fileURL = URL.createObjectURL(e.target.files[0]);
+                  setLogo(fileURL);
+                }
+              }}
+            />
+          </Flex>
+          <Button
+            className="w-full"
+            onClick={() => {
+              if (reactToPrintFn) {
+                reactToPrintFn();
+              }
+            }}
+          >
+            Save as PDF
           </Button>
         </Flex>
       </Grid>
