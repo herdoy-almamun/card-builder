@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
 
 const Nav = () => {
   return (
-    <div className="h-[70px] flex items-center justify-center px-3 md:px-0">
+    <div className="h-[70px] flex items-center justify-center px-3 md:px-0 border-b">
       <Container>
         <nav className="flex items-center justify-between">
           <Link href="/">
@@ -16,8 +16,8 @@ const Nav = () => {
               <Link href="/register"> Log In </Link>
             </li>
             <li>
-              <Link href="/register">
-                <Button size="sm">Register</Button>
+              <Link href="/register" className={buttonVariants({ size: "sm" })}>
+                Register
               </Link>
             </li>
           </ul>

@@ -5,6 +5,7 @@ import { Poppins } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
+import Nav from "./nav";
 
 const poppin = Poppins({
   subsets: ["latin"],
@@ -26,7 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppin.variable}>
-        <Theme>{children}</Theme>
+        <Theme>
+          <Nav />
+          <main>{children}</main>
+        </Theme>
         <ToastContainer />
       </body>
     </html>
