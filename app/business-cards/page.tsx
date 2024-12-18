@@ -9,36 +9,36 @@ const Templates = () => {
         Select a Template
       </h1>
       <Grid columns={{ initial: "1", sm: "2", md: "3", lg: "3" }} gap="4">
-        <Link href="/bushness-cards/card-1">
+        <Link href="/business-cards/card-1">
           <Image
-            src="/bushness-card/card1/thumb.jpg"
+            src="/business-card/card1/thumb.jpg"
             width={500}
             height={700}
-            alt="design-1"
+            alt="design"
           />
         </Link>
-        <Link href="/bushness-cards/card-2">
+        <Link href="/business-cards/card-2">
           <Image
-            src="/bushness-card/card2/thumb.jpg"
+            src="/business-card/card2/thumb.jpg"
             width={500}
             height={700}
-            alt="design-1"
+            alt="design"
           />
         </Link>
-        <Link href="/bushness-cards/card-3">
+        <Link href="/business-cards/card-3">
           <Image
-            src="/bushness-card/card3/thumb.jpg"
+            src="/business-card/card3/thumb.jpg"
             width={500}
             height={700}
-            alt="design-1"
+            alt="design"
           />
         </Link>
-        <Link href="/bushness-cards/card-4">
+        <Link href="/business-cards/card-4">
           <Image
-            src="/bushness-card/card4/thumb.jpg"
+            src="/business-card/card4/thumb.jpg"
             width={500}
             height={700}
-            alt="design-1"
+            alt="design"
           />
         </Link>
       </Grid>

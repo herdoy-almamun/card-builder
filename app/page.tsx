@@ -16,7 +16,7 @@ export default function Home() {
           Design, Customize, and Download Your Perfect{" "}
           <span className="text-primary">Business Card</span> Totally Free!
         </h1>
-        <Link href="/bushness-cards" className={buttonVariants()}>
+        <Link href="/business-cards" className={buttonVariants()}>
           Get Start
         </Link>
       </Flex>
