@@ -12,7 +12,7 @@ const Design: React.FC = () => {
   const [phone, setPhone] = useState<string>("+8801408127781");
   const [email, setEmail] = useState<string>("herdoycode@gmail.com");
   const [website, setWebsite] = useState<string>("www.herdoycode.com");
-  const [logo, setLogo] = useState("/logos/design-1.png");
+  const [logo, setLogo] = useState("/bushness-card/card1/logo.png");
   const [name, setName] = useState<string>("Your Name");
   const [tag, setTag] = useState<string>("Graphic Designer");
 
@@ -42,7 +42,7 @@ const Design: React.FC = () => {
               <Image
                 width={1050}
                 height={600}
-                src="/cards/card11.png"
+                src="/bushness-card/card1/front.png"
                 alt="card"
                 className="w-[1050px] h-[600px]"
               />
@@ -71,7 +71,7 @@ const Design: React.FC = () => {
               <Image
                 width={1050}
                 height={600}
-                src="/cards/card12.png"
+                src="/bushness-card/card1/back.png"
                 alt="card"
                 className="w-[1050px] h-[600px]"
               />
