@@ -31,7 +31,7 @@ const Design: React.FC = () => {
         <Flex
           align="center"
           justify="center"
-          style={{ zoom: "40%" }}
+          style={{ zoom: "35%" }}
           className="bg-gray-400"
         >
           <Flex

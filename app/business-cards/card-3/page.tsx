@@ -12,7 +12,8 @@ const Design: React.FC = () => {
   const [phone, setPhone] = useState<string>("+8801408127781");
   const [email, setEmail] = useState<string>("herdoycode@gmail.com");
   const [website, setWebsite] = useState<string>("www.herdoycode.com");
-  const [logo, setLogo] = useState("/business-card/card1/logo.png");
+  const [logo, setLogo] = useState("/business-card/card3/logo.png");
+  const [logob, setLogob] = useState("/business-card/card3/logob.png");
   const [name, setName] = useState<string>("Your Name");
   const [tag, setTag] = useState<string>("Graphic Designer");
 
@@ -42,41 +43,47 @@ const Design: React.FC = () => {
               <Image
                 width={1050}
                 height={600}
-                src="/business-card/card1/front.png"
+                src="/business-card/card3/front.png"
                 alt="card"
                 className="w-[1050px] h-[600px]"
               />
-              <Grid
-                columns="1"
-                rows="4"
-                className="text-[28px] absolute top-[185px] left-[170px] text-white gap-[25px]"
+              <Flex
+                className="absolute top-[150px] right-[130px] text-[#c5a983]"
+                direction="column"
+                gap="6"
+              >
+                <h1 className="text-[55px] font-semibold leading-3">{name}</h1>
+                <span className="text-2xl">{tag}</span>
+              </Flex>
+
+              <Flex
+                className="absolute bottom-[145px] right-[95px] text-[#c5a983] text-2xl gap-[17px]"
+                direction="column"
               >
                 <div>{location}</div>
                 <div>{phone}</div>
                 <div>{email}</div>
                 <div>{website}</div>
-              </Grid>
+              </Flex>
+
               <Flex
                 direction="column"
                 align="end"
-                className="absolute right-[85px] top-[250px] leading-[45px]"
+                className="absolute left-[190px] top-[240px]"
               >
-                <h1 className="text-[60px] font-semibold tracking-[-2px]">
-                  {name}
-                </h1>
-                <span className="text-[28px] font-[600]">{tag}</span>
+                <img src={logo} alt="logo" className="w-[170px]" />
               </Flex>
             </Box>
             <Box className="w-[1050px] h-[600px] relative">
               <Image
                 width={1050}
                 height={600}
-                src="/business-card/card1/back.png"
+                src="/business-card/card3/back.png"
                 alt="card"
                 className="w-[1050px] h-[600px]"
               />
               <div className="absolute w-full h-full flex items-center justify-center top-0 left-0">
-                <img src={logo} className="w-[300px]" />
+                <img src={logob} className="w-[340px]" />
               </div>
             </Box>
           </Flex>
@@ -126,10 +133,10 @@ const Design: React.FC = () => {
             className="w-full border rounded-md overflow-hidden cursor-pointer relative"
             gap="2"
           >
-            <div className="p-1 bg-black">
+            <div className="p-1 bg-white">
               <img src={logo} alt="logo" className="h-7" />
             </div>
-            <span className="text-gray-400">Select your logo</span>
+            <span className="text-gray-400">Select front logo</span>
             <input
               className="w-full absolute top-0 left-0 opacity-0 cursor-pointer"
               type="file"
@@ -137,6 +144,27 @@ const Design: React.FC = () => {
                 if (e.target.files && e.target.files[0]) {
                   const fileURL = URL.createObjectURL(e.target.files[0]);
                   setLogo(fileURL);
+                }
+              }}
+            />
+          </Flex>
+          <Flex
+            align="center"
+            justify="start"
+            className="w-full border rounded-md overflow-hidden cursor-pointer relative"
+            gap="2"
+          >
+            <div className="p-1 bg-cyan-900">
+              <img src={logob} alt="logo" className="h-7" />
+            </div>
+            <span className="text-gray-400">Select back logo</span>
+            <input
+              className="w-full absolute top-0 left-0 opacity-0 cursor-pointer"
+              type="file"
+              onChange={(e) => {
+                if (e.target.files && e.target.files[0]) {
+                  const fileURL = URL.createObjectURL(e.target.files[0]);
+                  setLogob(fileURL);
                 }
               }}
             />
