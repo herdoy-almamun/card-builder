@@ -3,7 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Box, Container, Flex, Grid } from "@radix-ui/themes";
 import Image from "next/image";
-import { ReactNode, useRef } from "react";
+import { ReactNode, useRef, useState } from "react";
+import { BeatLoader } from "react-spinners";
 import { useReactToPrint } from "react-to-print";
 
 interface Props {
@@ -16,9 +17,12 @@ interface Props {
 
 const CardLayout = ({ front, back, infoFront, infoBack, inputs }: Props) => {
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const [isLoading, setLoading] = useState(false);
 
   const reactToPrintFn = useReactToPrint({
     contentRef: contentRef as React.RefObject<Element | Text>,
+    onBeforePrint: async () => setLoading(true),
+    onAfterPrint: () => setLoading(false),
   });
 
   return (
@@ -71,7 +75,7 @@ const CardLayout = ({ front, back, infoFront, infoBack, inputs }: Props) => {
               }
             }}
           >
-            Save as PDF
+            {isLoading ? <BeatLoader /> : "Save as PDF"}
           </Button>
         </Flex>
       </Grid>
