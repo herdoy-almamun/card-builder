@@ -41,22 +41,22 @@ const CardLayout = ({ front, back, infoFront, infoBack, inputs }: Props) => {
               <Image
                 width={1050}
                 height={600}
+                src={back}
+                alt="card"
+                className="w-[1050px] h-[600px]"
+              />
+              {infoBack}
+            </Box>
+            <Box className="w-[1050px] h-[600px] relative">
+              <Image
+                width={1050}
+                height={600}
                 src={front}
                 alt="card"
                 className="w-[1050px] h-[600px]"
               />
 
               {infoFront}
-            </Box>
-            <Box className="w-[1050px] h-[600px] relative">
-              <Image
-                width={1050}
-                height={600}
-                src={back}
-                alt="card"
-                className="w-[1050px] h-[600px]"
-              />
-              {infoBack}
             </Box>
           </Flex>
         </Flex>

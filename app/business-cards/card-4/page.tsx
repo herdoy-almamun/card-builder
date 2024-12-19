@@ -11,28 +11,18 @@ const Design = () => {
   const [phone, setPhone] = useState<string>("+8801408127781");
   const [email, setEmail] = useState<string>("herdoycode@gmail.com");
   const [website, setWebsite] = useState<string>("www.herdoycode.com");
-  const [logo, setLogo] = useState("/business-card/card3/logo.png");
-  const [logob, setLogob] = useState("/business-card/card3/logob.png");
+  const [logo, setLogo] = useState("/business-card/card4/logo.png");
   const [name, setName] = useState<string>("Your Name");
   const [tag, setTag] = useState<string>("Graphic Designer");
 
   return (
     <CardLayout
-      front="/business-card/card3/front.png"
-      back="/business-card/card3/back.png"
+      front="/business-card/card4/front.png"
+      back="/business-card/card4/back.png"
       infoFront={
         <>
           <Flex
-            className="absolute top-[150px] right-[130px] text-[#c5a983]"
-            direction="column"
-            gap="6"
-          >
-            <h1 className="text-[55px] font-semibold leading-3">{name}</h1>
-            <span className="text-2xl">{tag}</span>
-          </Flex>
-
-          <Flex
-            className="absolute bottom-[150px] right-[95px] text-[#c5a983] text-2xl gap-[15px]"
+            className="absolute top-[205px] right-[110px] text-[#c5a983] text-2xl gap-[15px]"
             direction="column"
           >
             <div>{phone}</div>
@@ -44,15 +34,16 @@ const Design = () => {
           <Flex
             direction="column"
             align="end"
-            className="absolute left-[190px] top-[240px]"
+            className="absolute left-[140px] top-[240px] text-[#c5a983]"
           >
-            <img src={logo} alt="logo" className="w-[170px]" />
+            <h1 className="text-[55px] font-semibold leading">{name}</h1>
+            <span className="text-2xl">{tag}</span>
           </Flex>
         </>
       }
       infoBack={
         <div className="absolute w-full h-full flex items-center justify-center top-0 left-0">
-          <img src={logob} className="w-[340px]" />
+          <img src={logo} className="w-[450px]" />
         </div>
       }
       inputs={
@@ -64,7 +55,6 @@ const Design = () => {
           <InputChange value={email} setValue={setEmail} />
           <InputChange value={website} setValue={setWebsite} />
           <HandleLogoChange logo={logo} setLogo={setLogo} />
-          <HandleLogoChange logo={logob} setLogo={setLogob} />
         </>
       }
     />
